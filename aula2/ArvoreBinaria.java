@@ -28,6 +28,20 @@ public class ArvoreBinaria{
         return atual;
     }
 
+    void preOrdem(){
+        System.out.println("Nomes em pré-ordem: ");
+        preOrdemRecursivo(raiz);
+        System.out.println();
+    }
+
+    void preOrdemRecursivo(No atual){
+        if(atual != null){
+            System.out.print(atual.nome + " ");//visita no atual primeiro
+            preOrdemRecursivo(atual.esquerda);//depois percorre a subárvore esquerda
+            preOrdemRecursivo(atual.direita);//por ultimo percorre a subárvore direita
+        }
+    }
+
     public static void main(String[] args){
         ArvoreBinaria arvore = new ArvoreBinaria();
         arvore.inserir("Lucas");
@@ -35,15 +49,37 @@ public class ArvoreBinaria{
         System.out.println("Nome inserido: " + arvore.raiz.nome);
         System.out.println("Nome inserido: " + arvore.raiz.esquerda.nome);
 
+    
+
 
         //Lista com 10 nomes
         String[] nomes = {
             "Lucas", "Amanda", "Bruno", "Carla", "Eduardo", "Fernanda", "Gustavo", "Helena", "Igor", "Beatriz"
         };
+
+
         for (String nome: nomes) {
             arvore.inserir(nome);
         }
-        //Exibir os nomes em ordem
-        // arvore.emOrdem();
+        arvore.preOrdem();
+        arvore.emOrdem();
+
     }
+
+    void emOrdem(){
+        System.out.println("Nomes em ordem: ");
+        emOrdemRecursivo(raiz);
+        System.out.println();
+
     }
+
+    void emOrdemRecursivo(No atual){
+        if(atual != null){
+            emOrdemRecursivo(atual.esquerda);
+            System.out.print(atual.nome + " ");
+            emOrdemRecursivo(atual.direita);
+        }
+    }
+    
+    
+}
