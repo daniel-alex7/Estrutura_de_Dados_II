@@ -80,6 +80,58 @@ public class ArvoreBinaria{
             emOrdemRecursivo(atual.direita);
         }
     }
-    
-    
+
+    //Exibir árvore binária graficamente
+    void exibirArvore(){
+        System.out.println("\nÁrvore binária: ");
+        if(raiz == null){
+            System.out.println("Árvore vazia");
+            return;
+        } 
+
+        System.out.println(raiz.nome);
+
+
+        if(raiz.esquerda != null){
+         exibirArvoreRecurivo(raiz.esquerda, 
+            "",
+            raiz.direita == null,
+            "E: "
+         );
+    }
+
+    if(raiz.direita != null){
+        exibirArvoreRecurivo(raiz.direita, 
+            "",
+            true,
+            "D: "
+        );
+    }
 }
+
+    void exibirArvoreRecurivo(No atual, String prefixo, boolean ultimo, String lado){
+        if(atual == null){
+            return;
+        }    
+
+        System.out.println(prefixo + 
+            (ultimo ? "└── " : "├── ") 
+            + lado 
+            +atual.nome);
+
+        System.out.println(prefixo + (ultimo ? "└── " : "├── ") + lado + atual.nome);
+
+        String novoPrefixo;
+
+        if(ultimo){
+            novoPrefixo = prefixo + "└── ";
+        } else {
+            novoPrefixo = prefixo + "├── ";
+        }
+
+        if (atual.esquerda != null){
+            exibirArvoreRecurivo(atual.esquerda, novoPrefixo, atual.direita == null, "E: ");      
+        }
+}
+}
+    
