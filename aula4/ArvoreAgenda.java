@@ -1,30 +1,31 @@
-package aula2;
+package aula4;
 
-public class ArvoreBinaria {
+public class ArvoreAgenda {
     static class No {
-        String nome;
+        Agenda contato;
         No esquerda, direita;
-        No(String nome) {
-            this.nome = nome;
+        No(Agenda contato) {
+            this.contato = contato;
             esquerda = direita = null;
         }
 
     }
 
     No raiz;
-    void inserir(String nome) {
-        raiz = inserirRecursivo(raiz, nome);
+
+    void inserir(Agenda contato) {
+        raiz = inserirRecursivo(raiz, contato);
     }
 
-    protected No inserirRecursivo(No atual, String nome) {
+    protected No inserirRecursivo(No atual, Agenda contato) {
         if (atual == null) {
-            return new No(nome);
+            return new No(contato);
         }
 
-        if (nome.compareToIgnoreCase(atual.nome) < 0) {
-            atual.esquerda = inserirRecursivo(atual.esquerda, nome);
-        } else if (nome.compareToIgnoreCase(atual.nome) > 0) {
-            atual.direita = inserirRecursivo(atual.direita, nome);
+        if (contato.nome.compareToIgnoreCase(atual.contato.nome) < 0) {
+            atual.esquerda = inserirRecursivo(atual.esquerda, contato);
+        } else if (contato.nome.compareToIgnoreCase(atual.contato.nome) > 0) {
+            atual.direita = inserirRecursivo(atual.direita, contato);
         }
 
         return atual;
@@ -34,7 +35,7 @@ public class ArvoreBinaria {
     // Travessia em Pré-Ordem (raiz -> esquerda -> direita)
 
     void preOrdem() {
-        System.out.println("Nomes em Pré-Ordem:");
+        System.out.println("Contatos em Pré-Ordem:");
         preOrdemRecursivo(raiz);
         System.out.println();
 
@@ -43,7 +44,7 @@ public class ArvoreBinaria {
     void preOrdemRecursivo(No atual) {
 
         if (atual != null) {
-            System.out.print(atual.nome + " "); // 1. Visita o nó atual primeiro
+            System.out.print(atual.contato.nome + " "); // 1. Visita o nó atual primeiro
             preOrdemRecursivo(atual.esquerda); // 2. Depois percorre a subárvore esquerda
             preOrdemRecursivo(atual.direita); // 3. Por último percorre a subárvore direita
 
@@ -51,40 +52,10 @@ public class ArvoreBinaria {
 
     }
 
-    public static void main(String[] args) {
-
-        ArvoreBinaria arvore = new ArvoreBinaria();
-        // arvore.inserir("Lucas");
-        // arvore.inserir("Amanda");
-        // System.out.println("Conteúdo da raiz: " + arvore.raiz.nome);
-        // System.out.println("Nó esquerdo da raiz: " + arvore.raiz.esquerda.nome);
-        // Lista de 10 nomes aleatórios
-
-        String[] nomes = {
-                "Lucas", "Amanda", "Bruno", "Carla", "Eduardo",
-                "Fernanda", "Gustavo", "Helena", "Igor", "Beatriz", "Ana"
-        };
-
-        for (String nome : nomes) {
-            arvore.inserir(nome);
-
-        }
-
-        arvore.preOrdem();
-        arvore.exibirArvore();
-        arvore.excluir("Bruno");
-        arvore.exibirArvore();
-        
-
-    }
-
-
-
-
     // Impressão in-order (alfabética)
 
     void emOrdem() {
-        System.out.println("Nomes em ordem alfabética:");
+        System.out.println("Contatos em ordem alfabética:");
         emOrdemRecursivo(raiz);
 
     }
@@ -92,9 +63,30 @@ public class ArvoreBinaria {
     void emOrdemRecursivo(No atual) {
         if (atual != null) {
             emOrdemRecursivo(atual.esquerda);
-            System.out.println(atual.nome);
+            System.out.println(atual.contato);
             emOrdemRecursivo(atual.direita);
 
+        }
+
+    }
+
+    // Busca um contato pelo nome
+
+    Agenda buscarPorNome(String nome) {
+        return buscarRecursivo(raiz, nome);
+    }
+
+    Agenda buscarRecursivo(No atual, String nome) {
+        if (atual == null) {
+            return null;
+        }
+
+        if (nome.compareToIgnoreCase(atual.contato.nome) == 0) {
+            return atual.contato;
+        } else if (nome.compareToIgnoreCase(atual.contato.nome) < 0) {
+            return buscarRecursivo(atual.esquerda, nome);
+        } else {
+            return buscarRecursivo(atual.direita, nome);
         }
 
     }
@@ -110,7 +102,7 @@ public class ArvoreBinaria {
         }
 
         // Exibe a raiz
-        System.out.println(raiz.nome);
+        System.out.println(raiz.contato.nome);
         // Exibe a subárvore esquerda
         if (raiz.esquerda != null) {
             exibirArvoreRecursivo(
@@ -152,7 +144,7 @@ public class ArvoreBinaria {
                 prefixo
                         + (ultimo ? "└── " : "├── ")
                         + lado
-                        + atual.nome
+                        + atual.contato.nome
 
         );
 
@@ -190,7 +182,7 @@ public class ArvoreBinaria {
 
     }
 
-    void exluir(String nome) {
+    void excluir(String nome) {
         raiz = excluirRecursivo(raiz, nome);
     }
 
@@ -199,14 +191,14 @@ public class ArvoreBinaria {
             return null;
         }
 
-        if (nome.compareToIgnoreCase(atual.nome) < 0) {
+        if (nome.compareToIgnoreCase(atual.contato.nome) < 0) {
             atual.esquerda = excluirRecursivo(atual.esquerda, nome);
-        } 
-        
-        else if (nome.compareToIgnoreCase(atual.nome) > 0) {
+        }
+
+        else if (nome.compareToIgnoreCase(atual.contato.nome) > 0) {
             atual.direita = excluirRecursivo(atual.direita, nome);
-        } 
-        
+        }
+
         else {
             // Nó encontrado, realizar a exclusão
             if (atual.esquerda == null && atual.direita == null) {
@@ -217,14 +209,17 @@ public class ArvoreBinaria {
                 // Caso 2: Nó com apenas um filho à direita
                 return atual.direita;
 
+            } else if (atual.direita == null) {
+                // Caso 2b: Nó com apenas um filho à esquerda
+                return atual.esquerda;
             }
 
-            //Caso 3: Nó com dois filhos
+            // Caso 3: Nó com dois filhos
 
             No predecessor = maiorNo(atual.esquerda);
 
-            atual.nome = predecessor.nome;
-            atual.esquerda = excluirRecursivo(atual.esquerda, predecessor.nome);
+            atual.contato = predecessor.contato;
+            atual.esquerda = excluirRecursivo(atual.esquerda, predecessor.contato.nome);
         }
 
         return atual;
@@ -237,5 +232,44 @@ public class ArvoreBinaria {
         return atual;
     }
 
+    public static void main(String[] args) {
+
+        ArvoreAgenda arvoreAgenda = new ArvoreAgenda();
+
+        Agenda[] contatos = {
+                new Agenda("Lucas", "Rua A, 123", "1111-1111"),
+                new Agenda("Amanda", "Rua B, 456", "2222-2222"),
+                new Agenda("Bruno", "Rua C, 789", "3333-3333"),
+                new Agenda("Carla", "Rua D, 101", "4444-4444"),
+                new Agenda("Eduardo", "Rua E, 202", "5555-5555"),
+                new Agenda("Fernanda", "Rua F, 303", "6666-6666"),
+                new Agenda("Gustavo", "Rua G, 404", "7777-7777"),
+                new Agenda("Helena", "Rua H, 505", "8888-8888"),
+                new Agenda("Igor", "Rua I, 606", "9999-9999"),
+                new Agenda("Beatriz", "Rua J, 707", "0000-0000")
+        };
+
+        for (Agenda contato : contatos) {
+            arvoreAgenda.inserir(contato);
+        }
+
+        // arvoreAgenda.preOrdem();
+
+        System.out.println("=== Contatos na Agenda ===");
+        arvoreAgenda.emOrdem();
+
+        arvoreAgenda.exibirArvore();
+
+        // Buscar pessoa
+        String nomeBuscaAgenda = "Helena";
+        Agenda resultadoAgenda = arvoreAgenda.buscarPorNome(nomeBuscaAgenda);
+        System.out.println("\nBusca na agenda: " + resultadoAgenda);
+
+        // // Excluir contato e exibir árvore novamente
+
+        // arvoreAgenda.excluir("Bruno");
+        // arvoreAgenda.exibirArvore();
+
+    }
 
 }
