@@ -24,7 +24,9 @@ class Agenda {
 // 2. Interface Exercicio2
 interface Exercicio2 {
     void inserir(Agenda contato);
+
     void emOrdem();
+
     Agenda buscarPorNome(String nome);
 }
 
@@ -89,7 +91,8 @@ class AVLTree3 implements Exercicio2 {
 
     // Inserir contato e balancear
     Node inserir(Node node, Agenda contato) {
-        if (node == null) return new Node(contato);
+        if (node == null)
+            return new Node(contato);
 
         int comp = contato.nome.compareToIgnoreCase(node.contato.nome);
 
@@ -153,7 +156,8 @@ class AVLTree3 implements Exercicio2 {
 
     // Percurso em nível (BFS)
     void emNivel() {
-        if (raiz == null) return;
+        if (raiz == null)
+            return;
 
         Queue<Node> fila = new LinkedList<>();
         fila.add(raiz);
@@ -178,13 +182,17 @@ class AVLTree3 implements Exercicio2 {
     }
 
     private Agenda buscar(Node node, String nome) {
-        if (node == null) return null;
+        if (node == null)
+            return null;
 
         int comp = nome.compareToIgnoreCase(node.contato.nome);
 
-        if (comp == 0) return node.contato;
-        if (comp < 0) return buscar(node.esquerda, nome);
-        else return buscar(node.direita, nome);
+        if (comp == 0)
+            return node.contato;
+        if (comp < 0)
+            return buscar(node.esquerda, nome);
+        else
+            return buscar(node.direita, nome);
     }
 }
 
@@ -194,12 +202,16 @@ public class ArvoreBalanceada3 {
         Exercicio2 arvore = new AVLTree3();
 
         Agenda[] contatos = {
-            new Agenda("Lucas", "Rua A, 123", "1111-1111"),
-            new Agenda("Amanda", "Rua B, 456", "2222-2222"),
-            new Agenda("Bruno", "Rua C, 789", "3333-3333"),
-            new Agenda("Carla", "Rua D, 101", "4444-4444"),
-            new Agenda("Eduardo", "Rua E, 202", "5555-5555"),
-            new Agenda("Fernanda", "Rua F, 303", "6666-6666")
+                new Agenda("Lucas", "Rua A, 123", "1111-1111"),
+                new Agenda("Amanda", "Rua B, 456", "2222-2222"),
+                new Agenda("Bruno", "Rua C, 789", "3333-3333"),
+                new Agenda("Carla", "Rua D, 101", "4444-4444"),
+                new Agenda("Eduardo", "Rua E, 202", "5555-5555"),
+                new Agenda("Fernanda", "Rua F, 303", "6666-6666"),
+                new Agenda("Gustavo", "Rua G, 404", "7777-7777"),
+                new Agenda("Helena", "Rua H, 505", "8888-8888"),
+                new Agenda("Igor", "Rua I, 606", "9999-9999"),
+                new Agenda("Beatriz", "Rua J, 707", "0000-0000")
         };
 
         for (Agenda c : contatos) {
