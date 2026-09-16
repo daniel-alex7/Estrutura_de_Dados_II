@@ -1,18 +1,20 @@
 package aula4.ex3;
 
+/**
+ * Agenda
+ */
 public class Agenda {
-    String nome;
-    String endereco;
-    String telefone;
 
-    Agenda(String nome, String endereco, String telefone) {
-        this.nome = nome;
-        this.endereco = endereco;
-        this.telefone = telefone;
+    public String nome;
+
+    public Agenda(String string, String string2, String string3) {
+        //TODO Auto-generated constructor stub
     }
 
-    @Override
-    public String toString() {
-        return "Nome: " + nome + ", Endereço: " + endereco + ", Telefone: " + telefone;
+    class nome {
+
+        public nome() {
+        }
     }
+
 }

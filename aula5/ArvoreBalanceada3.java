@@ -1,3 +1,5 @@
+package aula5;                              // define o pacote onde a classe está localizada
+
 import java.util.LinkedList;               // importa a implementação LinkedList (usada como fila)
 import java.util.Queue;                    // importa a interface Queue (contrato para filas)
 

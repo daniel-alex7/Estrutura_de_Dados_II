@@ -190,7 +190,7 @@ public class ArvoreBinaria {
 
     }
 
-    void exluir(String nome) {
+    void excluir(String nome) {
         raiz = excluirRecursivo(raiz, nome);
     }
 

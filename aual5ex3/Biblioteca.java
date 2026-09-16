@@ -35,7 +35,7 @@ public class Biblioteca {
         this.ano = ano;
     }
 
-    public String toString() {
+    public String toString1() {
         return "Título: " + titulo + ", Autor: " + autor + ", Ano: " + ano;
     }
     
