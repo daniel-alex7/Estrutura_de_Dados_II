@@ -1,0 +1,10 @@
+CREATE DATABASE IF NOT EXISTS agenda_db CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+USE agenda_db;
+
+CREATE TABLE IF NOT EXISTS contatos (
+    id BIGINT NOT NULL AUTO_INCREMENT,
+    nome VARCHAR(100) NOT NULL,
+    telefone VARCHAR(20) NOT NULL,
+    idade INT NOT NULL,
+    PRIMARY KEY (id)
+);
