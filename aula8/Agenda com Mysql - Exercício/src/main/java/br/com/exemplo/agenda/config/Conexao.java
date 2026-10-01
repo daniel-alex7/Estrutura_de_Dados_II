@@ -12,4 +12,21 @@ public class Conexao {
     public Connection abrir() throws SQLException {
         return DriverManager.getConnection(URL, USUARIO, SENHA);
     }
+
+    public static void main(String[] args) {
+        try {
+            Conexao conexaoObj = new Conexao();
+            Connection conexao = conexaoObj.abrir();
+            
+            if (conexao != null) {
+                System.out.println("Conexão realizada com sucesso!");
+                conexao.close(); // Boa prática: fechar após o teste
+            } else {
+                System.out.println("Falha ao conectar.");
+            }
+        } catch (SQLException e) {
+            System.out.println("Erro ao conectar com o banco: " + e.getMessage());
+            e.printStackTrace();
+        }
+    }
 }
