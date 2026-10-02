@@ -1,0 +1,10 @@
+C:\Users\Daniel Silva\Estrutura_de_Dados_II\avl-sistema-solicitacao\src\main\java\br\com\exemplo\avl\AvlApplication.java
+C:\Users\Daniel Silva\Estrutura_de_Dados_II\avl-sistema-solicitacao\src\main\java\br\com\exemplo\avl\controller\SolicitacaoController.java
+C:\Users\Daniel Silva\Estrutura_de_Dados_II\avl-sistema-solicitacao\src\main\java\br\com\exemplo\avl\dto\ApiResponse.java
+C:\Users\Daniel Silva\Estrutura_de_Dados_II\avl-sistema-solicitacao\src\main\java\br\com\exemplo\avl\dto\SolicitacaoRequest.java
+C:\Users\Daniel Silva\Estrutura_de_Dados_II\avl-sistema-solicitacao\src\main\java\br\com\exemplo\avl\dto\SolicitacaoUpdateRequest.java
+C:\Users\Daniel Silva\Estrutura_de_Dados_II\avl-sistema-solicitacao\src\main\java\br\com\exemplo\avl\model\NoAVL.java
+C:\Users\Daniel Silva\Estrutura_de_Dados_II\avl-sistema-solicitacao\src\main\java\br\com\exemplo\avl\model\Solicitacao.java
+C:\Users\Daniel Silva\Estrutura_de_Dados_II\avl-sistema-solicitacao\src\main\java\br\com\exemplo\avl\repository\ArvoreAVLRepository.java
+C:\Users\Daniel Silva\Estrutura_de_Dados_II\avl-sistema-solicitacao\src\main\java\br\com\exemplo\avl\repository\SolicitacaoRepository.java
+C:\Users\Daniel Silva\Estrutura_de_Dados_II\avl-sistema-solicitacao\src\main\java\br\com\exemplo\avl\service\SolicitacaoService.java
