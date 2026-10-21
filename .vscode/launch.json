@@ -4,6 +4,26 @@
     // Para obter mais informações, acesse: https://go.microsoft.com/fwlink/?linkid=830387
     "version": "0.2.0",
     "configurations": [
-
+        {
+            "type": "java",
+            "name": "SistemaHospitalarGUI",
+            "request": "launch",
+            "mainClass": "SistemaHospitalarGUI",
+            "projectName": ""
+        },
+        {
+            "type": "java",
+            "name": "MinHeapGenerico",
+            "request": "launch",
+            "mainClass": "MinHeapGenerico",
+            "projectName": ""
+        },
+        {
+            "type": "java",
+            "name": "Main",
+            "request": "launch",
+            "mainClass": "br.com.exemplo.agenda.Main",
+            "projectName": "agenda-java-mysql"
+        }
     ]
 }
