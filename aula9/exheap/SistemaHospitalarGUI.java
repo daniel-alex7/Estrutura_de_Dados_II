@@ -14,7 +14,7 @@ public class SistemaHospitalarGUI extends JFrame {
     private JTextField txtNome, txtId;
     private JComboBox<Integer> cbPrioridade;
     
-    // Lista auxiliar para acumular pacientes antes de rodar o teste completo
+    
     private List<Paciente> listaTeste;
 
     public SistemaHospitalarGUI() {
@@ -27,7 +27,7 @@ public class SistemaHospitalarGUI extends JFrame {
         setLocationRelativeTo(null);
         setLayout(new BorderLayout(10, 10));
 
-        // Painel de Cadastro e Ações
+        
         JPanel painelSuperior = new JPanel(new GridLayout(2, 1, 5, 5));
         
         JPanel painelCadastro = new JPanel(new FlowLayout(FlowLayout.LEFT, 8, 8));
@@ -53,7 +53,7 @@ public class SistemaHospitalarGUI extends JFrame {
         
         painelSuperior.add(painelCadastro);
 
-        // Painel de Testes com o novo botão solicitado
+        
         JPanel painelTestes = new JPanel(new FlowLayout(FlowLayout.LEFT, 8, 8));
         painelTestes.setBorder(BorderFactory.createTitledBorder("Gerenciamento de Testes"));
 
@@ -68,7 +68,7 @@ public class SistemaHospitalarGUI extends JFrame {
         painelSuperior.add(painelTestes);
         add(painelSuperior, BorderLayout.NORTH);
 
-        // Tabela e Logs
+        
         modeloTabela = new DefaultTableModel(new Object[]{"Posição", "Nome", "ID", "Prioridade", "Ordem Chegada"}, 0);
         tabelaPacientes = new JTable(modeloTabela);
         JScrollPane scrollTabela = new JScrollPane(tabelaPacientes);
@@ -83,7 +83,6 @@ public class SistemaHospitalarGUI extends JFrame {
         splitPane.setDividerLocation(220);
         add(splitPane, BorderLayout.CENTER);
 
-        // Ações dos Botões
         btnInserir.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -122,7 +121,6 @@ public class SistemaHospitalarGUI extends JFrame {
             }
         });
 
-        // Botão solicitado para acrescentar elementos à lista de teste
         btnAcrescentarTeste.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -158,7 +156,6 @@ public class SistemaHospitalarGUI extends JFrame {
         btnRodarTeste.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                // Se o usuário não cadastrou nada personalizado, usa o teste padrão solicitado
                 List<Paciente> pacientesParaRodar = new ArrayList<>(listaTeste);
                 if (pacientesParaRodar.isEmpty()) {
                     pacientesParaRodar.add(new Paciente("Carlos", 103, 1));

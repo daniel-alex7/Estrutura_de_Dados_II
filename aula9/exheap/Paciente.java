@@ -20,12 +20,10 @@ public class Paciente implements Comparable<Paciente> {
 
     @Override
     public int compareTo(Paciente outro) {
-        // Regra de prioridade: menor número = maior prioridade
         int cmp = Integer.compare(this.prioridade, outro.prioridade);
         if (cmp != 0) {
             return cmp;
         }
-        // Desempate por ordem de chegada (FIFO)
         return Long.compare(this.ordemChegada, outro.ordemChegada);
     }
 

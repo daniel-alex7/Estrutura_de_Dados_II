@@ -1,0 +1,1 @@
+Coloque nesta pasta o arquivo mysql-connector-j-X.Y.Z.jar extraído do MySQL Connector/J. O driver não está incluído neste ZIP.
