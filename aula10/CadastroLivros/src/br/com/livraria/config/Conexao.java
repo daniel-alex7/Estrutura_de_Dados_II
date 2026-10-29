@@ -8,8 +8,7 @@ public class Conexao {
     // Ajuste conforme sua instalação local do MySQL.
     private static final String URL = "jdbc:mysql://localhost:3306/livraria_db";
     private static final String USUARIO = "root";
-    private static final String SENHA = "SUA_SENHA";
-
+    private static final String SENHA = "root";
     public Connection abrir() throws SQLException {
         return DriverManager.getConnection(URL, USUARIO, SENHA);
     }
